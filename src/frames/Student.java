@@ -26,6 +26,8 @@ public class Student extends JFrame {
 
         //---- label1 ----
         label1.setText("Question will be displayed here.");
+        label1.setHorizontalAlignment(SwingConstants.CENTER);
+        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 7f));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);

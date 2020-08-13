@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import javax.swing.*;
@@ -21,21 +22,36 @@ import javax.swing.filechooser.FileSystemView;
  * @author Vignesh
  */
 public class Teacher extends JFrame {
+
+    Student studentWindow = new Student();
+    ButtonGroup bg = new ButtonGroup();
+    int category = 0;
+
+    ArrayList<ArrayList<Q_and_A>> qa_list = new ArrayList<ArrayList<Q_and_A>>();
+    ArrayList<ArrayList<Q_and_A>> qa_list_temp = new ArrayList<ArrayList<Q_and_A>>();
+
     public Teacher() {
         initComponents();
+        radioButton1.setSelected(true);
         button2.setVisible(false);
         button3.setVisible(false);
         button4.setVisible(false);
+        bg.add(radioButton1);
+        bg.add(radioButton2);
+        bg.add(radioButton3);
+        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
+        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
+        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
+
+        qa_list_temp.add(new ArrayList<Q_and_A>()); qa_list_temp.add(new ArrayList<Q_and_A>());
+        qa_list_temp.add(new ArrayList<Q_and_A>()); qa_list_temp.add(new ArrayList<Q_and_A>());
+        qa_list_temp.add(new ArrayList<Q_and_A>()); qa_list_temp.add(new ArrayList<Q_and_A>());
     }
 
     private void thisWindowClosing(WindowEvent e) {
         studentWindow.dispose();
         this.dispose();
     }
-
-    List<Q_and_A> qa_list = new ArrayList<Q_and_A>();
-    List<Q_and_A> qa_list_temp = new ArrayList<Q_and_A>();
-    Student studentWindow = new Student();
 
     int rand_gen(int a) {
         Random rand = new Random();
@@ -53,27 +69,50 @@ public class Teacher extends JFrame {
                 BufferedReader br = new BufferedReader(new FileReader(path));
                 while ((line = br.readLine()) != null) {
                     String[] qa = line.split(splitBy);
-                    qa_list.add(new Q_and_A(qa[0], qa[1]));
+                    switch(qa[0]){
+                        case "1":
+                            if(qa[1].equalsIgnoreCase("E"))
+                                qa_list.get(0).add(new Q_and_A(qa[2], qa[3]));
+                            else if(qa[1].equalsIgnoreCase("H"))
+                                qa_list.get(1).add(new Q_and_A(qa[2], qa[3]));
+                            break;
+                        case "2":
+                            if(qa[1].equalsIgnoreCase("E"))
+                                qa_list.get(2).add(new Q_and_A(qa[2], qa[3]));
+                            else if(qa[1].equalsIgnoreCase("H"))
+                                qa_list.get(3).add(new Q_and_A(qa[2], qa[3]));
+                            break;
+                        case "3":
+                            if(qa[1].equalsIgnoreCase("E"))
+                                qa_list.get(4).add(new Q_and_A(qa[2], qa[3]));
+                            else if(qa[1].equalsIgnoreCase("H"))
+                                qa_list.get(5).add(new Q_and_A(qa[2], qa[3]));
+                            break;
+                        default:
+                            System.out.println(qa[0]);
+                    }
                 }
             } catch (IOException exc) {
                 exc.printStackTrace();
             }
-            qa_list_temp.addAll(qa_list);
+            //Collections.copy(qa_list_temp,qa_list);
+            qa_list_temp = (ArrayList<ArrayList<Q_and_A>>) qa_list.clone();
             studentWindow.setVisible(true);
         }
     }
 
     private void button1MouseClicked(MouseEvent e) {
-        if (qa_list.isEmpty()) {
+        //System.out.println(qa_list.get(0).get(1).question);
+        if (qa_list.get(0).isEmpty()) {
             JOptionPane.showMessageDialog(this, "Open CSV file first!");
         } else {
             try {
-                int rand = rand_gen(qa_list_temp.size());
-                Q_and_A a = qa_list_temp.get(rand);
+                int rand = rand_gen(qa_list_temp.get(category).size());
+                Q_and_A a = qa_list_temp.get(category).get(rand);
                 label1.setText(a.question);
                 label2.setText(a.answer);
                 studentWindow.label1.setText(a.question);
-                qa_list_temp.remove(rand);
+                qa_list_temp.get(category).remove(rand);
                 button1.setVisible(false);
                 button2.setVisible(true);
                 button3.setVisible(true);
@@ -86,8 +125,10 @@ public class Teacher extends JFrame {
     }
 
     private void button2MouseClicked(MouseEvent e) {
-        qa_list_temp = new ArrayList<Q_and_A>();
-        qa_list_temp.addAll(qa_list);
+        //System.out.println(qa_list.get(0).get(1).question);
+        qa_list_temp.clear();
+        //Collections.copy(qa_list_temp,qa_list);
+        qa_list_temp = (ArrayList<ArrayList<Q_and_A>>) qa_list.clone();
         button1.setVisible(true);
         button2.setVisible(false);
         button3.setVisible(false);
@@ -98,21 +139,51 @@ public class Teacher extends JFrame {
     }
 
     private void button3MouseClicked(MouseEvent e) {
-        if (qa_list_temp.isEmpty()) {
+        if (qa_list_temp.get(category).isEmpty()) {
             JOptionPane.showMessageDialog(this, "No more question!");
         } else {
             try {
-                int rand = rand_gen(qa_list_temp.size());
-                Q_and_A a = qa_list_temp.get(rand);
+                int rand = rand_gen(qa_list_temp.get(category).size());
+                Q_and_A a = qa_list_temp.get(category).get(rand);
                 label1.setText(a.question);
                 label2.setText(a.answer);
                 studentWindow.label1.setText(a.question);
-                qa_list_temp.remove(rand);
+                qa_list_temp.get(category).remove(rand);
             } catch (Exception exc) {
                 exc.printStackTrace();
             }
         }
     }
+
+    private void button4ActionPerformed(ActionEvent e) {
+        if (qa_list_temp.get(category + 1).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No more question!");
+        } else {
+            try {
+                int rand = rand_gen(qa_list_temp.get(category + 1).size());
+                Q_and_A a = qa_list_temp.get(category + 1).get(rand);
+                label1.setText(a.question);
+                label2.setText(a.answer);
+                studentWindow.label1.setText(a.question);
+                qa_list_temp.get(category + 1).remove(rand);
+            } catch (Exception exc) {
+                exc.printStackTrace();
+            }
+        }
+    }
+
+    private void radioButton1ActionPerformed(ActionEvent e) {
+        category = 0;
+    }
+
+    private void radioButton2ActionPerformed(ActionEvent e) {
+        category = 2;
+    }
+
+    private void radioButton3ActionPerformed(ActionEvent e) {
+        category = 4;
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -126,6 +197,9 @@ public class Teacher extends JFrame {
         button2 = new JButton();
         button3 = new JButton();
         button4 = new JButton();
+        radioButton1 = new JRadioButton();
+        radioButton2 = new JRadioButton();
+        radioButton3 = new JRadioButton();
 
         //======== this ========
         setTitle("Teacher");
@@ -188,6 +262,19 @@ public class Teacher extends JFrame {
 
         //---- button4 ----
         button4.setText(">>Next Hard>>");
+        button4.addActionListener(e -> button4ActionPerformed(e));
+
+        //---- radioButton1 ----
+        radioButton1.setText("Category 1");
+        radioButton1.addActionListener(e -> radioButton1ActionPerformed(e));
+
+        //---- radioButton2 ----
+        radioButton2.setText("Category 2");
+        radioButton2.addActionListener(e -> radioButton2ActionPerformed(e));
+
+        //---- radioButton3 ----
+        radioButton3.setText("Category 3");
+        radioButton3.addActionListener(e -> radioButton3ActionPerformed(e));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
@@ -203,32 +290,51 @@ public class Teacher extends JFrame {
                             .addGap(231, 231, 231)
                             .addGroup(contentPaneLayout.createParallelGroup()
                                 .addComponent(button3, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(button4)))
-                        .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(label1, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                            .addComponent(label2, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)))
-                    .addContainerGap(23, Short.MAX_VALUE))
+                                .addComponent(button4))
+                            .addContainerGap(188, Short.MAX_VALUE))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(label1, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                                .addComponent(label2, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
+                            .addGap(53, 53, 53)
+                            .addGroup(contentPaneLayout.createParallelGroup()
+                                .addComponent(radioButton3)
+                                .addComponent(radioButton2)
+                                .addComponent(radioButton1))
+                            .addGap(0, 70, Short.MAX_VALUE))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(32, 32, 32)
-                    .addComponent(label1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(label2, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(51, 51, 51)
-                            .addComponent(button1)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE))
+                            .addGap(32, 32, 32)
+                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))
                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                            .addComponent(button3)
-                            .addGap(18, 18, 18)))
+                            .addContainerGap()
+                            .addComponent(radioButton1)))
+                    .addGap(18, 18, 18)
                     .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(button2)
-                        .addComponent(button4))
-                    .addGap(33, 33, 33))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(label2, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
+                            .addGroup(contentPaneLayout.createParallelGroup()
+                                .addGroup(contentPaneLayout.createSequentialGroup()
+                                    .addGap(51, 51, 51)
+                                    .addComponent(button1)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE))
+                                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                    .addComponent(button3)
+                                    .addGap(18, 18, 18)))
+                            .addGroup(contentPaneLayout.createParallelGroup()
+                                .addComponent(button2)
+                                .addComponent(button4))
+                            .addGap(33, 33, 33))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(radioButton2)
+                            .addGap(18, 18, 18)
+                            .addComponent(radioButton3)
+                            .addContainerGap(154, Short.MAX_VALUE))))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -250,5 +356,8 @@ public class Teacher extends JFrame {
     private JButton button2;
     private JButton button3;
     private JButton button4;
+    private JRadioButton radioButton1;
+    private JRadioButton radioButton2;
+    private JRadioButton radioButton3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

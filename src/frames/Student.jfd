@@ -12,6 +12,8 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "Question will be displayed here."
+				"horizontalAlignment": 0
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 7, false )
 				auxiliary() {
 					"JavaCodeGenerator.variableModifiers": 1
 				}
