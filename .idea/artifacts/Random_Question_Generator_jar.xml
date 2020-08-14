@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Random_Question_Generator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Random_Question_Generator_jar</output-path>
+    <root id="archive" name="Random_Question_Generator.jar">
+      <element id="module-output" name="Random_Question_Generator" />
+    </root>
+  </artifact>
+</component>

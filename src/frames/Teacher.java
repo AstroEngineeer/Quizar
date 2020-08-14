@@ -32,16 +32,25 @@ public class Teacher extends JFrame {
 
     public Teacher() {
         initComponents();
-        radioButton1.setSelected(true);
-
-        button2.setVisible(false);
-        button3.setVisible(false);
-        button4.setVisible(false);
 
         bg.add(radioButton1);
         bg.add(radioButton2);
         bg.add(radioButton3);
+    }
 
+    void newFile(){
+        radioButton1.setSelected(true);
+
+        button1.setVisible(true);
+        button2.setVisible(false);
+        button3.setVisible(false);
+        button4.setVisible(false);
+
+        label1.setText("Question will be displayed here.");
+        label2.setText("Answer will be displayed here.");
+        studentWindow.label1.setText("Question will be displayed here.");
+
+        qa_list.clear();
         qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
         qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
         qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
@@ -84,6 +93,7 @@ public class Teacher extends JFrame {
     }
 
     private void menuItem1ActionPerformed(ActionEvent e) {
+        newFile();
         JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         int r = j.showOpenDialog(this);
         if (r == JFileChooser.APPROVE_OPTION) {
@@ -93,33 +103,36 @@ public class Teacher extends JFrame {
             try {
                 BufferedReader br = new BufferedReader(new FileReader(path));
                 while ((line = br.readLine()) != null) {
-                    String[] qa = line.split(splitBy);
-                    switch(qa[0]){
-                        case "1":
-                            if(qa[1].equalsIgnoreCase("E"))
-                                qa_list.get(0).add(new Q_and_A(qa[2], qa[3]));
-                            else if(qa[1].equalsIgnoreCase("H"))
-                                qa_list.get(1).add(new Q_and_A(qa[2], qa[3]));
-                            break;
-                        case "2":
-                            if(qa[1].equalsIgnoreCase("E"))
-                                qa_list.get(2).add(new Q_and_A(qa[2], qa[3]));
-                            else if(qa[1].equalsIgnoreCase("H"))
-                                qa_list.get(3).add(new Q_and_A(qa[2], qa[3]));
-                            break;
-                        case "3":
-                            if(qa[1].equalsIgnoreCase("E"))
-                                qa_list.get(4).add(new Q_and_A(qa[2], qa[3]));
-                            else if(qa[1].equalsIgnoreCase("H"))
-                                qa_list.get(5).add(new Q_and_A(qa[2], qa[3]));
-                            break;
-                        default:
-                            //System.out.println(qa[0]);
+                    if (!line.equals(",,,")) {
+                        String[] qa = line.split(splitBy);
+                        switch (qa[0]) {
+                            case "1":
+                                if (qa[1].equalsIgnoreCase("E"))
+                                    qa_list.get(0).add(new Q_and_A(qa[2], qa[3]));
+                                else if (qa[1].equalsIgnoreCase("H"))
+                                    qa_list.get(1).add(new Q_and_A(qa[2], qa[3]));
+                                break;
+                            case "2":
+                                if (qa[1].equalsIgnoreCase("E"))
+                                    qa_list.get(2).add(new Q_and_A(qa[2], qa[3]));
+                                else if (qa[1].equalsIgnoreCase("H"))
+                                    qa_list.get(3).add(new Q_and_A(qa[2], qa[3]));
+                                break;
+                            case "3":
+                                if (qa[1].equalsIgnoreCase("E"))
+                                    qa_list.get(4).add(new Q_and_A(qa[2], qa[3]));
+                                else if (qa[1].equalsIgnoreCase("H"))
+                                    qa_list.get(5).add(new Q_and_A(qa[2], qa[3]));
+                                break;
+                            default:
+                                //System.out.println(qa[0]);
+                        }
                     }
                 }
-            } catch (IOException exc) {
-                exc.printStackTrace();
-            }
+                } catch(IOException exc){
+                    exc.printStackTrace();
+                }
+
             copyArrayList(qa_list_temp, qa_list);
             checkEmptyCategory();
             studentWindow.setVisible(true);
