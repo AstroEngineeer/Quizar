@@ -36,6 +36,7 @@ public class Teacher extends JFrame {
         bg.add(radioButton1);
         bg.add(radioButton2);
         bg.add(radioButton3);
+        bg.add(radioButton4);
     }
 
     void newFile(){
@@ -54,6 +55,7 @@ public class Teacher extends JFrame {
         qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
         qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
         qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
+        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
     }
 
     void copyArrayList(ArrayList<ArrayList<Q_and_A>> d, ArrayList<ArrayList<Q_and_A>> s){
@@ -62,8 +64,9 @@ public class Teacher extends JFrame {
         d.add(new ArrayList<Q_and_A>()); d.add(new ArrayList<Q_and_A>());
         d.add(new ArrayList<Q_and_A>()); d.add(new ArrayList<Q_and_A>());
         d.add(new ArrayList<Q_and_A>()); d.add(new ArrayList<Q_and_A>());
+        d.add(new ArrayList<Q_and_A>()); d.add(new ArrayList<Q_and_A>());
 
-        for(int i = 0 ; i < 6 ; i++ ){
+        for(int i = 0 ; i < 8 ; i++ ){
             for (int j = 0 ; j < s.get(i).size() ; j++ ){
                 d.get(i).add(s.get(i).get(j));
             }
@@ -79,6 +82,9 @@ public class Teacher extends JFrame {
         }
         if(qa_list.get(4).isEmpty() && qa_list.get(5).isEmpty()){
             radioButton3.setEnabled(false);
+        }
+        if(qa_list.get(6).isEmpty() && qa_list.get(7).isEmpty()){
+            radioButton4.setEnabled(false);
         }
     }
 
@@ -123,6 +129,12 @@ public class Teacher extends JFrame {
                                     qa_list.get(4).add(new Q_and_A(qa[2], qa[3]));
                                 else if (qa[1].equalsIgnoreCase("H"))
                                     qa_list.get(5).add(new Q_and_A(qa[2], qa[3]));
+                                break;
+                            case "4":
+                                if (qa[1].equalsIgnoreCase("E"))
+                                    qa_list.get(6).add(new Q_and_A(qa[2], qa[3]));
+                                else if (qa[1].equalsIgnoreCase("H"))
+                                    qa_list.get(7).add(new Q_and_A(qa[2], qa[3]));
                                 break;
                             default:
                                 //System.out.println(qa[0]);
@@ -222,9 +234,7 @@ public class Teacher extends JFrame {
         category = 4;
     }
 
-    private void radioButton4ActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
+    private void radioButton4ActionPerformed(ActionEvent e) { category = 6; }
 
 
     private void initComponents() {
