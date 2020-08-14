@@ -48,6 +48,8 @@ public class Teacher extends JFrame {
     }
 
     void copyArrayList(ArrayList<ArrayList<Q_and_A>> d, ArrayList<ArrayList<Q_and_A>> s){
+        qa_list_temp.clear();
+
         d.add(new ArrayList<Q_and_A>()); d.add(new ArrayList<Q_and_A>());
         d.add(new ArrayList<Q_and_A>()); d.add(new ArrayList<Q_and_A>());
         d.add(new ArrayList<Q_and_A>()); d.add(new ArrayList<Q_and_A>());
@@ -56,6 +58,18 @@ public class Teacher extends JFrame {
             for (int j = 0 ; j < s.get(i).size() ; j++ ){
                 d.get(i).add(s.get(i).get(j));
             }
+        }
+    }
+
+    void checkEmptyCategory(){
+        if(qa_list.get(0).isEmpty() && qa_list.get(1).isEmpty()){
+            radioButton1.setEnabled(false);
+        }
+        if(qa_list.get(2).isEmpty() && qa_list.get(3).isEmpty()){
+            radioButton2.setEnabled(false);
+        }
+        if(qa_list.get(4).isEmpty() && qa_list.get(5).isEmpty()){
+            radioButton3.setEnabled(false);
         }
     }
 
@@ -100,13 +114,14 @@ public class Teacher extends JFrame {
                                 qa_list.get(5).add(new Q_and_A(qa[2], qa[3]));
                             break;
                         default:
-                            System.out.println(qa[0]);
+                            //System.out.println(qa[0]);
                     }
                 }
             } catch (IOException exc) {
                 exc.printStackTrace();
             }
             copyArrayList(qa_list_temp, qa_list);
+            checkEmptyCategory();
             studentWindow.setVisible(true);
         }
     }
@@ -133,7 +148,6 @@ public class Teacher extends JFrame {
     }
 
     private void button2MouseClicked(MouseEvent e) {
-        qa_list_temp.clear();
         copyArrayList(qa_list_temp, qa_list);
 
         radioButton1.setSelected(true);
