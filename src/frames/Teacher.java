@@ -33,19 +33,30 @@ public class Teacher extends JFrame {
     public Teacher() {
         initComponents();
         radioButton1.setSelected(true);
+
         button2.setVisible(false);
         button3.setVisible(false);
         button4.setVisible(false);
+
         bg.add(radioButton1);
         bg.add(radioButton2);
         bg.add(radioButton3);
-        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
-        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
-        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
 
-        qa_list_temp.add(new ArrayList<Q_and_A>()); qa_list_temp.add(new ArrayList<Q_and_A>());
-        qa_list_temp.add(new ArrayList<Q_and_A>()); qa_list_temp.add(new ArrayList<Q_and_A>());
-        qa_list_temp.add(new ArrayList<Q_and_A>()); qa_list_temp.add(new ArrayList<Q_and_A>());
+        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
+        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
+        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
+    }
+
+    void copyArrayList(ArrayList<ArrayList<Q_and_A>> d, ArrayList<ArrayList<Q_and_A>> s){
+        d.add(new ArrayList<Q_and_A>()); d.add(new ArrayList<Q_and_A>());
+        d.add(new ArrayList<Q_and_A>()); d.add(new ArrayList<Q_and_A>());
+        d.add(new ArrayList<Q_and_A>()); d.add(new ArrayList<Q_and_A>());
+
+        for(int i = 0 ; i < 6 ; i++ ){
+            for (int j = 0 ; j < s.get(i).size() ; j++ ){
+                d.get(i).add(s.get(i).get(j));
+            }
+        }
     }
 
     private void thisWindowClosing(WindowEvent e) {
@@ -95,14 +106,12 @@ public class Teacher extends JFrame {
             } catch (IOException exc) {
                 exc.printStackTrace();
             }
-            //Collections.copy(qa_list_temp,qa_list);
-            qa_list_temp = (ArrayList<ArrayList<Q_and_A>>) qa_list.clone();
+            copyArrayList(qa_list_temp, qa_list);
             studentWindow.setVisible(true);
         }
     }
 
     private void button1MouseClicked(MouseEvent e) {
-        //System.out.println(qa_list.get(0).get(1).question);
         if (qa_list.get(0).isEmpty()) {
             JOptionPane.showMessageDialog(this, "Open CSV file first!");
         } else {
@@ -120,19 +129,21 @@ public class Teacher extends JFrame {
             } catch (Exception exc) {
                 exc.printStackTrace();
             }
-            ;
         }
     }
 
     private void button2MouseClicked(MouseEvent e) {
-        //System.out.println(qa_list.get(0).get(1).question);
         qa_list_temp.clear();
-        //Collections.copy(qa_list_temp,qa_list);
-        qa_list_temp = (ArrayList<ArrayList<Q_and_A>>) qa_list.clone();
+        copyArrayList(qa_list_temp, qa_list);
+
+        radioButton1.setSelected(true);
+        radioButton1ActionPerformed(null);
+
         button1.setVisible(true);
         button2.setVisible(false);
         button3.setVisible(false);
         button4.setVisible(false);
+
         label1.setText("Question will be displayed here.");
         label2.setText("Answer will be displayed here.");
         studentWindow.label1.setText("Question will be displayed here.");
