@@ -222,6 +222,10 @@ public class Teacher extends JFrame {
         category = 4;
     }
 
+    private void radioButton4ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -238,6 +242,7 @@ public class Teacher extends JFrame {
         radioButton1 = new JRadioButton();
         radioButton2 = new JRadioButton();
         radioButton3 = new JRadioButton();
+        radioButton4 = new JRadioButton();
 
         //======== this ========
         setTitle("Teacher");
@@ -314,6 +319,10 @@ public class Teacher extends JFrame {
         radioButton3.setText("Category 3");
         radioButton3.addActionListener(e -> radioButton3ActionPerformed(e));
 
+        //---- radioButton4 ----
+        radioButton4.setText("Category 4");
+        radioButton4.addActionListener(e -> radioButton4ActionPerformed(e));
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -321,6 +330,9 @@ public class Teacher extends JFrame {
                 .addGroup(contentPaneLayout.createSequentialGroup()
                     .addGap(32, 32, 32)
                     .addGroup(contentPaneLayout.createParallelGroup()
+                        .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(label1, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                            .addComponent(label2, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                 .addComponent(button1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -328,18 +340,18 @@ public class Teacher extends JFrame {
                             .addGap(231, 231, 231)
                             .addGroup(contentPaneLayout.createParallelGroup()
                                 .addComponent(button3, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(button4))
-                            .addContainerGap(188, Short.MAX_VALUE))
+                                .addComponent(button4))))
+                    .addGap(29, 29, 29)
+                    .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(label1, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                                .addComponent(label2, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
-                            .addGap(53, 53, 53)
                             .addGroup(contentPaneLayout.createParallelGroup()
                                 .addComponent(radioButton3)
                                 .addComponent(radioButton2)
                                 .addComponent(radioButton1))
-                            .addGap(0, 70, Short.MAX_VALUE))))
+                            .addGap(0, 70, Short.MAX_VALUE))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(radioButton4)
+                            .addContainerGap(70, Short.MAX_VALUE))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -359,20 +371,22 @@ public class Teacher extends JFrame {
                                 .addGroup(contentPaneLayout.createSequentialGroup()
                                     .addGap(51, 51, 51)
                                     .addComponent(button1)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE))
                                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                                     .addComponent(button3)
                                     .addGap(18, 18, 18)))
                             .addGroup(contentPaneLayout.createParallelGroup()
                                 .addComponent(button2)
                                 .addComponent(button4))
-                            .addGap(33, 33, 33))
+                            .addGap(34, 34, 34))
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addComponent(radioButton2)
                             .addGap(18, 18, 18)
                             .addComponent(radioButton3)
-                            .addContainerGap(154, Short.MAX_VALUE))))
+                            .addGap(18, 18, 18)
+                            .addComponent(radioButton4)
+                            .addContainerGap(108, Short.MAX_VALUE))))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -397,5 +411,6 @@ public class Teacher extends JFrame {
     private JRadioButton radioButton1;
     private JRadioButton radioButton2;
     private JRadioButton radioButton3;
+    private JRadioButton radioButton4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
