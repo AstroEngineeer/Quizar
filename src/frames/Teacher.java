@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
 /**
@@ -25,7 +26,7 @@ public class Teacher extends JFrame {
 
     Student studentWindow = new Student();
     ButtonGroup bg = new ButtonGroup();
-    int category = 0;
+    int category = 5;
 
     ArrayList<ArrayList<Q_and_A>> qa_list = new ArrayList<ArrayList<Q_and_A>>();
     ArrayList<ArrayList<Q_and_A>> qa_list_temp = new ArrayList<ArrayList<Q_and_A>>();
@@ -40,7 +41,7 @@ public class Teacher extends JFrame {
     }
 
     void newFile(){
-        radioButton1.setSelected(true);
+        //radioButton1.setSelected(true);
 
         button1.setVisible(true);
         button2.setVisible(false);
@@ -76,15 +77,32 @@ public class Teacher extends JFrame {
     void checkEmptyCategory(){
         if(qa_list.get(0).isEmpty() && qa_list.get(1).isEmpty()){
             radioButton1.setEnabled(false);
+            radioButton1.setSelected(false);
+        }
+        else
+        {
+            radioButton1.setEnabled(true);
         }
         if(qa_list.get(2).isEmpty() && qa_list.get(3).isEmpty()){
             radioButton2.setEnabled(false);
         }
+        else
+        {
+            radioButton2.setEnabled(true);
+        }
         if(qa_list.get(4).isEmpty() && qa_list.get(5).isEmpty()){
             radioButton3.setEnabled(false);
         }
+        else
+        {
+            radioButton3.setEnabled(true);
+        }
         if(qa_list.get(6).isEmpty() && qa_list.get(7).isEmpty()){
             radioButton4.setEnabled(false);
+        }
+        else
+        {
+            radioButton4.setEnabled(true);
         }
     }
 
@@ -101,6 +119,8 @@ public class Teacher extends JFrame {
     private void menuItem1ActionPerformed(ActionEvent e) {
         newFile();
         JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV", "csv", "questions");
+        j.setFileFilter(filter);
         int r = j.showOpenDialog(this);
         if (r == JFileChooser.APPROVE_OPTION) {
             String path = j.getSelectedFile().getAbsolutePath();
@@ -152,22 +172,29 @@ public class Teacher extends JFrame {
     }
 
     private void button1MouseClicked(MouseEvent e) {
-        if (qa_list.get(0).isEmpty()) {
+        if (qa_list.get(0).isEmpty()&&qa_list.get(1).isEmpty()&&qa_list.get(2).isEmpty()&&qa_list.get(3).isEmpty()&&qa_list.get(4).isEmpty()&&qa_list.get(5).isEmpty()&&qa_list.get(6).isEmpty()&&qa_list.get(7).isEmpty()) {
             JOptionPane.showMessageDialog(this, "Open CSV file first!");
         } else {
             try {
-                int rand = rand_gen(qa_list_temp.get(category).size());
-                Q_and_A a = qa_list_temp.get(category).get(rand);
-                label1.setText(a.question);
-                label2.setText(a.answer);
-                studentWindow.label1.setText(a.question);
-                qa_list_temp.get(category).remove(rand);
-                button1.setVisible(false);
-                button2.setVisible(true);
-                button3.setVisible(true);
-                button4.setVisible(true);
+                if(!(category ==5)) {
+                    int rand = rand_gen(qa_list_temp.get(category).size());
+                    Q_and_A a = qa_list_temp.get(category).get(rand);
+                    label1.setText(a.question);
+                    label2.setText(a.answer);
+                    studentWindow.label1.setText(a.question);
+                    qa_list_temp.get(category).remove(rand);
+                    button1.setVisible(false);
+                    button2.setVisible(true);
+                    button3.setVisible(true);
+                    button4.setVisible(true);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this,"select category");
+                }
             } catch (Exception exc) {
                 exc.printStackTrace();
+                JOptionPane.showMessageDialog(this,exc);
             }
         }
     }
@@ -175,7 +202,7 @@ public class Teacher extends JFrame {
     private void button2MouseClicked(MouseEvent e) {
         copyArrayList(qa_list_temp, qa_list);
 
-        radioButton1.setSelected(true);
+       // radioButton1.setSelected(true);
         radioButton1ActionPerformed(null);
 
         button1.setVisible(true);
@@ -189,23 +216,31 @@ public class Teacher extends JFrame {
     }
 
     private void button3MouseClicked(MouseEvent e) {
-        if (qa_list_temp.get(category).isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No more question!");
-        } else {
-            try {
-                int rand = rand_gen(qa_list_temp.get(category).size());
-                Q_and_A a = qa_list_temp.get(category).get(rand);
-                label1.setText(a.question);
-                label2.setText(a.answer);
-                studentWindow.label1.setText(a.question);
-                qa_list_temp.get(category).remove(rand);
-            } catch (Exception exc) {
-                exc.printStackTrace();
+        if(!(category ==5)) {
+            if (qa_list_temp.get(category).isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No more question!");
+            } else {
+                try {
+                    int rand = rand_gen(qa_list_temp.get(category).size());
+                    Q_and_A a = qa_list_temp.get(category).get(rand);
+                    label1.setText(a.question);
+                    label2.setText(a.answer);
+                    studentWindow.label1.setText(a.question);
+                    qa_list_temp.get(category).remove(rand);
+                } catch (Exception exc) {
+                    exc.printStackTrace();
+                }
             }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this,"select category");
         }
     }
 
     private void button4ActionPerformed(ActionEvent e) {
+        if(!(category==5))
+        {
         if (qa_list_temp.get(category + 1).isEmpty()) {
             JOptionPane.showMessageDialog(this, "No more question!");
         } else {
@@ -219,6 +254,10 @@ public class Teacher extends JFrame {
             } catch (Exception exc) {
                 exc.printStackTrace();
             }
+        }
+        }else
+        {
+            JOptionPane.showMessageDialog(this,"select category");
         }
     }
 
