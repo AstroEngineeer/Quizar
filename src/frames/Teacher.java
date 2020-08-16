@@ -27,7 +27,7 @@ public class Teacher extends JFrame {
     Student studentWindow = new Student();
     ButtonGroup bg = new ButtonGroup();
     int category = 5;
-
+//this are the arrays
     ArrayList<ArrayList<Q_and_A>> qa_list = new ArrayList<ArrayList<Q_and_A>>();
     ArrayList<ArrayList<Q_and_A>> qa_list_temp = new ArrayList<ArrayList<Q_and_A>>();
     List<String> result = new ArrayList<>();
