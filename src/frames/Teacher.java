@@ -55,7 +55,7 @@ public class Teacher extends JFrame {
         button4.setVisible(false);
 
         textArea1.setText("Question will be displayed here.");
-        label2.setText("Answer will be displayed here.");
+        textArea2.setText("Answer will be displayed here.");
         studentWindow.textArea1.setText("Question will be displayed here.");
 
         qa_list.clear();
@@ -201,7 +201,7 @@ public class Teacher extends JFrame {
                     int rand = rand_gen(qa_list_temp.get(category).size());
                     Q_and_A a = qa_list_temp.get(category).get(rand);
                     textArea1.setText(a.question);
-                    label2.setText(a.answer);
+                    textArea2.setText(a.answer);
                     studentWindow.textArea1.setText(a.question);
                     qa_list_temp.get(category).remove(rand);
                     button1.setVisible(false);
@@ -233,7 +233,7 @@ public class Teacher extends JFrame {
         button4.setVisible(false);
 
         textArea1.setText("Question will be displayed here.");
-        label2.setText("Answer will be displayed here.");
+        textArea2.setText("Answer will be displayed here.");
         studentWindow.textArea1.setText("Question will be displayed here.");
     }
 
@@ -246,7 +246,7 @@ public class Teacher extends JFrame {
                     int rand = rand_gen(qa_list_temp.get(category).size());
                     Q_and_A a = qa_list_temp.get(category).get(rand);
                     textArea1.setText(a.question);
-                    label2.setText(a.answer);
+                    textArea2.setText(a.answer);
                     studentWindow.textArea1.setText(a.question);
                     qa_list_temp.get(category).remove(rand);
                 } catch (Exception exc) {
@@ -271,7 +271,7 @@ public class Teacher extends JFrame {
                 int rand = rand_gen(qa_list_temp.get(category + 1).size());
                 Q_and_A a = qa_list_temp.get(category + 1).get(rand);
                 textArea1.setText(a.question);
-                label2.setText(a.answer);
+                textArea2.setText(a.answer);
                 studentWindow.textArea1.setText(a.question);
                 qa_list_temp.get(category + 1).remove(rand);
             } catch (Exception exc) {
@@ -306,7 +306,6 @@ public class Teacher extends JFrame {
         menuBar1 = new JMenuBar();
         menu1 = new JMenu();
         menuItem1 = new JMenuItem();
-        label2 = new JLabel();
         button1 = new JButton();
         button2 = new JButton();
         button3 = new JButton();
@@ -317,6 +316,8 @@ public class Teacher extends JFrame {
         radioButton4 = new JRadioButton();
         scrollPane1 = new JScrollPane();
         textArea1 = new JTextArea();
+        scrollPane2 = new JScrollPane();
+        textArea2 = new JTextArea();
 
         //======== this ========
         setTitle("Teacher");
@@ -343,10 +344,6 @@ public class Teacher extends JFrame {
             menuBar1.add(menu1);
         }
         setJMenuBar(menuBar1);
-
-        //---- label2 ----
-        label2.setText("Answer will be displayed here.");
-        label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 3f));
 
         //---- button1 ----
         button1.setText("Start Test");
@@ -407,53 +404,65 @@ public class Teacher extends JFrame {
             scrollPane1.setViewportView(textArea1);
         }
 
+        //======== scrollPane2 ========
+        {
+
+            //---- textArea2 ----
+            textArea2.setEditable(false);
+            textArea2.setFont(textArea2.getFont().deriveFont(textArea2.getFont().getSize() + 3f));
+            textArea2.setLineWrap(true);
+            textArea2.setText("Answer will be displayed here.");
+            scrollPane2.setViewportView(textArea2);
+        }
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(32, 32, 32)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGap(32, 32, 32)
                             .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                 .addComponent(button2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(button1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
                             .addGroup(contentPaneLayout.createParallelGroup()
                                 .addComponent(button4)
-                                .addComponent(button3, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(label2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(scrollPane1))
-                    .addGap(29, 29, 29)
-                    .addGroup(contentPaneLayout.createParallelGroup()
+                                .addComponent(button3, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE))
+                            .addGap(112, 112, 112))
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGroup(contentPaneLayout.createParallelGroup()
-                                .addComponent(radioButton3)
-                                .addComponent(radioButton2)
-                                .addComponent(radioButton1))
-                            .addGap(0, 30, Short.MAX_VALUE))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(radioButton4)
-                            .addContainerGap(30, Short.MAX_VALUE))))
+                            .addContainerGap()
+                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 722, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)))
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        .addComponent(radioButton3)
+                        .addComponent(radioButton2)
+                        .addComponent(radioButton1)
+                        .addComponent(radioButton4))
+                    .addContainerGap(94, Short.MAX_VALUE))
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 722, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(210, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(70, 70, 70)
+                    .addGap(29, 29, 29)
                     .addComponent(radioButton1)
                     .addGap(18, 18, 18)
                     .addComponent(radioButton2)
-                    .addGap(18, 18, 18)
+                    .addGap(31, 31, 31)
                     .addComponent(radioButton3)
                     .addGap(18, 18, 18)
                     .addComponent(radioButton4)
-                    .addContainerGap(160, Short.MAX_VALUE))
+                    .addContainerGap(208, Short.MAX_VALUE))
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(12, Short.MAX_VALUE)
                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label2, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(button3)
                         .addComponent(button1))
@@ -477,7 +486,6 @@ public class Teacher extends JFrame {
     private JMenuBar menuBar1;
     private JMenu menu1;
     private JMenuItem menuItem1;
-    private JLabel label2;
     private JButton button1;
     private JButton button2;
     private JButton button3;
@@ -488,5 +496,7 @@ public class Teacher extends JFrame {
     private JRadioButton radioButton4;
     private JScrollPane scrollPane1;
     private JTextArea textArea1;
+    private JScrollPane scrollPane2;
+    private JTextArea textArea2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
