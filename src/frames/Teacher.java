@@ -133,7 +133,7 @@ public class Teacher extends JFrame {
             try {
                 BufferedReader br = new BufferedReader(new FileReader(path));
                 while ((line = br.readLine()) != null) {
-                    if (!line.equals(",,,,")) {
+                    if (!line.equals(",,,")) {
                         String[] qa = line.split(splitBy);
                         //System.out.println(qa.length);
                         if(qa.length==4) {
