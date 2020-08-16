@@ -17,7 +17,7 @@ public class Student extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Vignesh
+        // Generated using JFormDesigner Evaluation license - Sam
         label1 = new JLabel();
 
         //======== this ========
@@ -51,7 +51,7 @@ public class Student extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Vignesh
+    // Generated using JFormDesigner Evaluation license - Sam
     public JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

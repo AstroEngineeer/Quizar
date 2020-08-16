@@ -225,7 +225,7 @@ public class Teacher extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Vignesh
+        // Generated using JFormDesigner Evaluation license - Sam
         menuBar1 = new JMenuBar();
         menu1 = new JMenu();
         menuItem1 = new JMenuItem();
@@ -384,7 +384,7 @@ public class Teacher extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Vignesh
+    // Generated using JFormDesigner Evaluation license - Sam
     private JMenuBar menuBar1;
     private JMenu menu1;
     private JMenuItem menuItem1;
