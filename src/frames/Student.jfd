@@ -4,21 +4,24 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :::p, comp textArea1:::p:605:p, space ::12:x}}"
-			"$verticalGroup": "par l {seq l {space :::p, comp textArea1:::p:339:p, space ::13:x}}"
+			"$horizontalGroup": "par l {seq l {space :::p, comp scrollPane1::::611:x, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp scrollPane1::::346:x, space :::p}}"
 		} ) {
 			name: "this"
 			"title": "Student"
-			add( new FormComponent( "javax.swing.JTextArea" ) {
-				name: "textArea1"
-				"editable": false
-				"opaque": false
-				"lineWrap": true
-				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 12, false )
-				"text": "Question Will be Displayed here!"
-				auxiliary() {
-					"JavaCodeGenerator.variableModifiers": 1
-				}
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textArea1"
+					"editable": false
+					"opaque": false
+					"lineWrap": true
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 6, false )
+					"text": "Question Will be Displayed here!"
+					auxiliary() {
+						"JavaCodeGenerator.variableModifiers": 1
+					}
+				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 25, 5 )
