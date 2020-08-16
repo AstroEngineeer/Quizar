@@ -38,6 +38,10 @@ public class Teacher extends JFrame {
         bg.add(radioButton2);
         bg.add(radioButton3);
         bg.add(radioButton4);
+        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
+        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
+        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
+        qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
     }
 
     void newFile(){
@@ -176,7 +180,14 @@ public class Teacher extends JFrame {
     }
 
     private void button1MouseClicked(MouseEvent e) {
-        if (qa_list.get(0).isEmpty()&&qa_list.get(1).isEmpty()&&qa_list.get(2).isEmpty()&&qa_list.get(3).isEmpty()&&qa_list.get(4).isEmpty()&&qa_list.get(5).isEmpty()&&qa_list.get(6).isEmpty()&&qa_list.get(7).isEmpty()) {
+        if (qa_list.get(0).isEmpty()
+                &&qa_list.get(1).isEmpty()
+                &&qa_list.get(2).isEmpty()
+                &&qa_list.get(3).isEmpty()
+                &&qa_list.get(4).isEmpty()
+                &&qa_list.get(5).isEmpty()
+                &&qa_list.get(6).isEmpty()
+                &&qa_list.get(7).isEmpty()) {
             JOptionPane.showMessageDialog(this, "Open CSV file first!");
         } else {
             try {
