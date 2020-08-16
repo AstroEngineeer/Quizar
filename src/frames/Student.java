@@ -4,6 +4,7 @@
 
 package frames;
 
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
@@ -17,17 +18,19 @@ public class Student extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Vignesh
-        label1 = new JLabel();
+        // Generated using JFormDesigner Evaluation license - Sam
+        textArea1 = new JTextArea();
 
         //======== this ========
         setTitle("Student");
         var contentPane = getContentPane();
 
-        //---- label1 ----
-        label1.setText("Question will be displayed here.");
-        label1.setHorizontalAlignment(SwingConstants.CENTER);
-        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 7f));
+        //---- textArea1 ----
+        textArea1.setEditable(false);
+        textArea1.setOpaque(false);
+        textArea1.setLineWrap(true);
+        textArea1.setFont(textArea1.getFont().deriveFont(textArea1.getFont().getStyle() | Font.BOLD, textArea1.getFont().getSize() + 12f));
+        textArea1.setText("Question Will be Displayed here!");
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
@@ -35,15 +38,15 @@ public class Student extends JFrame {
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(label1, GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
-                    .addContainerGap())
+                    .addComponent(textArea1, GroupLayout.PREFERRED_SIZE, 605, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(12, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(41, 41, 41)
-                    .addComponent(label1, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(80, Short.MAX_VALUE))
+                    .addContainerGap()
+                    .addComponent(textArea1, GroupLayout.PREFERRED_SIZE, 339, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(13, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -51,7 +54,7 @@ public class Student extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Vignesh
-    public JLabel label1;
+    // Generated using JFormDesigner Evaluation license - Sam
+    public JTextArea textArea1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
