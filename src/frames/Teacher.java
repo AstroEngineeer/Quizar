@@ -63,7 +63,7 @@ public class Teacher extends JFrame {
         qa_list.add(new ArrayList<Q_and_A>()); qa_list.add(new ArrayList<Q_and_A>());
     }
 
-    void copyArrayList(ArrayList<ArrayList<Q_and_A>> d, ArrayList<ArrayList<Q_and_A>> s){
+    private void copyArrayList(ArrayList<ArrayList<Q_and_A>> d, ArrayList<ArrayList<Q_and_A>> s){
         qa_list_temp.clear();
 
         d.add(new ArrayList<Q_and_A>()); d.add(new ArrayList<Q_and_A>());
@@ -170,7 +170,7 @@ public class Teacher extends JFrame {
                 }
                 } catch(IOException exc){
                     exc.printStackTrace();
-                    JOptionPane.showMessageDialog(this,exc);
+                    JOptionPane.showMessageDialog(this,exc + " file selector");
                 }
 
             copyArrayList(qa_list_temp, qa_list);
@@ -209,7 +209,7 @@ public class Teacher extends JFrame {
                 }
             } catch (Exception exc) {
                 exc.printStackTrace();
-                JOptionPane.showMessageDialog(this,exc);
+                JOptionPane.showMessageDialog(this,exc + " start button");
             }
         }
     }
@@ -218,6 +218,7 @@ public class Teacher extends JFrame {
         copyArrayList(qa_list_temp, qa_list);
 
        // radioButton1.setSelected(true);
+        bg.clearSelection();
         radioButton1ActionPerformed(null);
 
         button1.setVisible(true);
@@ -244,6 +245,7 @@ public class Teacher extends JFrame {
                     qa_list_temp.get(category).remove(rand);
                 } catch (Exception exc) {
                     exc.printStackTrace();
+                    JOptionPane.showMessageDialog(this,exc + "next easy button" );
                 }
             }
         }
@@ -268,6 +270,7 @@ public class Teacher extends JFrame {
                 qa_list_temp.get(category + 1).remove(rand);
             } catch (Exception exc) {
                 exc.printStackTrace();
+                JOptionPane.showMessageDialog(this,exc + " next hard button");
             }
         }
         }else
