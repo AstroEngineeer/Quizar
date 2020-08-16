@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -29,6 +30,8 @@ public class Teacher extends JFrame {
 
     ArrayList<ArrayList<Q_and_A>> qa_list = new ArrayList<ArrayList<Q_and_A>>();
     ArrayList<ArrayList<Q_and_A>> qa_list_temp = new ArrayList<ArrayList<Q_and_A>>();
+    List<String> result = new ArrayList<>();
+
 
     public Teacher() {
         initComponents();
@@ -135,32 +138,35 @@ public class Teacher extends JFrame {
                     if (!line.equals(",,,")) {
                         //System.out.println(line);
                         String[] qa = line.split(splitBy);
+                        result = CSVUtils.parseLine(line);
+//                      //result.get(1), result.get(3)
+                        System.out.println(result.get(0)+"| "+result.get(1)+"| question = "+result.get(2)+"| Answer ="+result.get(3));
                         //System.out.println(qa[0]+" "+qa[1]+" "+qa[2]+" "+qa[3]+" ");
-                        if(qa.length==4) {
-                            switch (qa[0]) {
+                        if(result.size()==4) {
+                            switch (result.get(0)) {
                                 case "1":
-                                    if (qa[1].equalsIgnoreCase("E"))
-                                        qa_list.get(0).add(new Q_and_A(qa[2], qa[3]));
-                                    else if (qa[1].equalsIgnoreCase("H"))
-                                        qa_list.get(1).add(new Q_and_A(qa[2], qa[3]));
+                                    if (result.get(1).equalsIgnoreCase("E"))
+                                        qa_list.get(0).add(new Q_and_A(result.get(2), result.get(3)));
+                                    else if (result.get(1).equalsIgnoreCase("H"))
+                                        qa_list.get(1).add(new Q_and_A(result.get(2), result.get(3)));
                                     break;
                                 case "2":
-                                    if (qa[1].equalsIgnoreCase("E"))
-                                        qa_list.get(2).add(new Q_and_A(qa[2], qa[3]));
-                                    else if (qa[1].equalsIgnoreCase("H"))
-                                        qa_list.get(3).add(new Q_and_A(qa[2], qa[3]));
+                                    if (result.get(1).equalsIgnoreCase("E"))
+                                        qa_list.get(2).add(new Q_and_A(result.get(2), result.get(3)));
+                                    else if (result.get(1).equalsIgnoreCase("H"))
+                                        qa_list.get(3).add(new Q_and_A(result.get(2), result.get(3)));
                                     break;
                                 case "3":
-                                    if (qa[1].equalsIgnoreCase("E"))
-                                        qa_list.get(4).add(new Q_and_A(qa[2], qa[3]));
-                                    else if (qa[1].equalsIgnoreCase("H"))
-                                        qa_list.get(5).add(new Q_and_A(qa[2], qa[3]));
+                                    if (result.get(1).equalsIgnoreCase("E"))
+                                        qa_list.get(4).add(new Q_and_A(result.get(2), result.get(3)));
+                                    else if (result.get(1).equalsIgnoreCase("H"))
+                                        qa_list.get(5).add(new Q_and_A(result.get(2), result.get(3)));
                                     break;
                                 case "4":
-                                    if (qa[1].equalsIgnoreCase("E"))
-                                        qa_list.get(6).add(new Q_and_A(qa[2], qa[3]));
-                                    else if (qa[1].equalsIgnoreCase("H"))
-                                        qa_list.get(7).add(new Q_and_A(qa[2], qa[3]));
+                                    if (result.get(1).equalsIgnoreCase("E"))
+                                        qa_list.get(6).add(new Q_and_A(result.get(2), result.get(3)));
+                                    else if (result.get(1).equalsIgnoreCase("H"))
+                                        qa_list.get(7).add(new Q_and_A(result.get(2), result.get(3)));
                                     break;
                                 default:
                                     //System.out.println(qa[0]);
