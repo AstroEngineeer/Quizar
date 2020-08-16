@@ -82,7 +82,7 @@ public class CSVUtils {
 
                     //Fixed : allow "" in empty quote enclosed
                     if (chars[0] != '"' && customQuote == '\"') {
-                        curVal.append(' ');
+                        curVal.append('"');
                     }
 
                     //double quotes in column will hit this!

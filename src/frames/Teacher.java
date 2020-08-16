@@ -5,14 +5,13 @@
 package frames;
 
 import models.Q_and_A;
+import AdvanceCSVSplitting.CSVUtils;
 
 import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -134,8 +133,9 @@ public class Teacher extends JFrame {
                 BufferedReader br = new BufferedReader(new FileReader(path));
                 while ((line = br.readLine()) != null) {
                     if (!line.equals(",,,")) {
+                        System.out.println(line);
                         String[] qa = line.split(splitBy);
-                        //System.out.println(qa.length);
+                        System.out.println(qa[0]+" "+qa[1]+" "+qa[2]+" "+qa[3]+" ");
                         if(qa.length==4) {
                             switch (qa[0]) {
                                 case "1":
