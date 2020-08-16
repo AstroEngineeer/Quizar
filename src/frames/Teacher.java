@@ -137,10 +137,10 @@ public class Teacher extends JFrame {
                 while ((line = br.readLine()) != null) {
                     if (!line.equals(",,,")) {
                         //System.out.println(line);
-                        String[] qa = line.split(splitBy);
+                        //String[] qa = line.split(splitBy);
                         result = CSVUtils.parseLine(line);
 //                      //result.get(1), result.get(3)
-                        System.out.println(result.get(0)+"| "+result.get(1)+"| question = "+result.get(2)+"| Answer ="+result.get(3));
+                        //System.out.println(result.get(0)+"| "+result.get(1)+"| question = "+result.get(2)+"| Answer ="+result.get(3));
                         //System.out.println(qa[0]+" "+qa[1]+" "+qa[2]+" "+qa[3]+" ");
                         if(result.size()==4) {
                             switch (result.get(0)) {
