@@ -401,7 +401,7 @@ public class Teacher extends JFrame {
             //---- textArea1 ----
             textArea1.setLineWrap(true);
             textArea1.setEditable(false);
-            textArea1.setFont(textArea1.getFont().deriveFont(textArea1.getFont().getSize() + 5f));
+            textArea1.setFont(textArea1.getFont().deriveFont(textArea1.getFont().getSize() + 6f));
             textArea1.setText("Question Will be Displayed here!");
             textArea1.setOpaque(false);
             scrollPane1.setViewportView(textArea1);
@@ -431,40 +431,37 @@ public class Teacher extends JFrame {
                                 .addComponent(radioButton3)
                                 .addComponent(radioButton2)
                                 .addComponent(radioButton1))
-                            .addGap(0, 15, Short.MAX_VALUE))
+                            .addGap(0, 30, Short.MAX_VALUE))
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addComponent(radioButton4)
-                            .addContainerGap(15, Short.MAX_VALUE))))
+                            .addContainerGap(30, Short.MAX_VALUE))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addGap(70, 70, 70)
+                    .addComponent(radioButton1)
                     .addGap(18, 18, 18)
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(radioButton1)
-                            .addGap(18, 18, 18)
-                            .addComponent(radioButton2)
-                            .addGap(18, 18, 18)
-                            .addComponent(radioButton3))
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(radioButton4)
-                            .addContainerGap(160, Short.MAX_VALUE))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                            .addComponent(label2, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(button3)
-                                .addComponent(button1))
-                            .addGap(18, 18, 18)
-                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(button2)
-                                .addComponent(button4))
-                            .addContainerGap())))
+                    .addComponent(radioButton2)
+                    .addGap(18, 18, 18)
+                    .addComponent(radioButton3)
+                    .addGap(18, 18, 18)
+                    .addComponent(radioButton4)
+                    .addContainerGap(160, Short.MAX_VALUE))
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addContainerGap(12, Short.MAX_VALUE)
+                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(label2, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(button3)
+                        .addComponent(button1))
+                    .addGap(18, 18, 18)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(button2)
+                        .addComponent(button4))
+                    .addContainerGap())
         );
         pack();
         setLocationRelativeTo(getOwner());
