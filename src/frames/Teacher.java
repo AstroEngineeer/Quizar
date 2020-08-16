@@ -129,40 +129,44 @@ public class Teacher extends JFrame {
             try {
                 BufferedReader br = new BufferedReader(new FileReader(path));
                 while ((line = br.readLine()) != null) {
-                    if (!line.equals(",,,")) {
+                    if (!line.equals(",,,,")) {
                         String[] qa = line.split(splitBy);
-                        switch (qa[0]) {
-                            case "1":
-                                if (qa[1].equalsIgnoreCase("E"))
-                                    qa_list.get(0).add(new Q_and_A(qa[2], qa[3]));
-                                else if (qa[1].equalsIgnoreCase("H"))
-                                    qa_list.get(1).add(new Q_and_A(qa[2], qa[3]));
-                                break;
-                            case "2":
-                                if (qa[1].equalsIgnoreCase("E"))
-                                    qa_list.get(2).add(new Q_and_A(qa[2], qa[3]));
-                                else if (qa[1].equalsIgnoreCase("H"))
-                                    qa_list.get(3).add(new Q_and_A(qa[2], qa[3]));
-                                break;
-                            case "3":
-                                if (qa[1].equalsIgnoreCase("E"))
-                                    qa_list.get(4).add(new Q_and_A(qa[2], qa[3]));
-                                else if (qa[1].equalsIgnoreCase("H"))
-                                    qa_list.get(5).add(new Q_and_A(qa[2], qa[3]));
-                                break;
-                            case "4":
-                                if (qa[1].equalsIgnoreCase("E"))
-                                    qa_list.get(6).add(new Q_and_A(qa[2], qa[3]));
-                                else if (qa[1].equalsIgnoreCase("H"))
-                                    qa_list.get(7).add(new Q_and_A(qa[2], qa[3]));
-                                break;
-                            default:
-                                //System.out.println(qa[0]);
+                        //System.out.println(qa.length);
+                        if(qa.length==4) {
+                            switch (qa[0]) {
+                                case "1":
+                                    if (qa[1].equalsIgnoreCase("E"))
+                                        qa_list.get(0).add(new Q_and_A(qa[2], qa[3]));
+                                    else if (qa[1].equalsIgnoreCase("H"))
+                                        qa_list.get(1).add(new Q_and_A(qa[2], qa[3]));
+                                    break;
+                                case "2":
+                                    if (qa[1].equalsIgnoreCase("E"))
+                                        qa_list.get(2).add(new Q_and_A(qa[2], qa[3]));
+                                    else if (qa[1].equalsIgnoreCase("H"))
+                                        qa_list.get(3).add(new Q_and_A(qa[2], qa[3]));
+                                    break;
+                                case "3":
+                                    if (qa[1].equalsIgnoreCase("E"))
+                                        qa_list.get(4).add(new Q_and_A(qa[2], qa[3]));
+                                    else if (qa[1].equalsIgnoreCase("H"))
+                                        qa_list.get(5).add(new Q_and_A(qa[2], qa[3]));
+                                    break;
+                                case "4":
+                                    if (qa[1].equalsIgnoreCase("E"))
+                                        qa_list.get(6).add(new Q_and_A(qa[2], qa[3]));
+                                    else if (qa[1].equalsIgnoreCase("H"))
+                                        qa_list.get(7).add(new Q_and_A(qa[2], qa[3]));
+                                    break;
+                                default:
+                                    //System.out.println(qa[0]);
+                            }
                         }
                     }
                 }
                 } catch(IOException exc){
                     exc.printStackTrace();
+                    JOptionPane.showMessageDialog(this,exc);
                 }
 
             copyArrayList(qa_list_temp, qa_list);
