@@ -119,8 +119,17 @@ public class Teacher extends JFrame {
     }
 
     int rand_gen(int a) {
-        SecureRandom rand = new SecureRandom();
-        return rand.nextInt(a);
+        int ran = 0;
+        try {
+            SecureRandom rand = SecureRandom.getInstance("Windows-PRNG");
+            //rand.setSeed(System.currentTimeMillis() % 1000);
+            ran = rand.nextInt(a);
+        }catch (Exception exc)
+        {
+            JOptionPane.showMessageDialog(this,exc);
+        }
+
+        return  ran;
     }
 
     private void menuItem1ActionPerformed(ActionEvent e) {
