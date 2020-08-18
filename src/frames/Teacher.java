@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.security.SecureRandom;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -118,7 +119,7 @@ public class Teacher extends JFrame {
     }
 
     int rand_gen(int a) {
-        Random rand = new Random();
+        SecureRandom rand = new SecureRandom();
         return rand.nextInt(a);
     }
 
