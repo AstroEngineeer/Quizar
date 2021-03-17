@@ -1,7 +1,5 @@
 # Random_Question_Generator
 
-This is a project to make it easier for teachers to conduct quiz .
-This application accepts CSV file filled with question and answers and allows teacher to conduct quiz using that file .
-It is intented to used via google meet or other video conference method .
-
-
+This is a application that makes it easier for teachers to conduct quizs .
+Upload CSV file containing the question and answers.  <br />
+It is intented to be used along with google meet or other video conference applications .
