@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+// Author : Vignesh, Rakesh
 public class CSVUtils {
 
     private static final char DEFAULT_SEPARATOR = ',';
@@ -109,7 +109,7 @@ public class CSVUtils {
             }
 
         }
-
+// Author : Vignesh, Rakesh
         result.add(curVal.toString());
 
         return result;

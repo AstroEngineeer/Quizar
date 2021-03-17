@@ -21,7 +21,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
 /**
- * @author Vignesh
+ * @author Vignesh, Rakesh
  */
 public class Teacher extends JFrame {
 
@@ -79,7 +79,7 @@ public class Teacher extends JFrame {
             }
         }
     }
-
+// Author : Vignesh, Rakesh
     void checkEmptyCategory(){
         if(qa_list.get(0).isEmpty() && qa_list.get(1).isEmpty()){
             radioButton1.setEnabled(false);
@@ -129,7 +129,7 @@ public class Teacher extends JFrame {
         }
 
         return  ran;
-    }
+    }// Author : Vignesh, Rakesh
 
     private void menuItem1ActionPerformed(ActionEvent e) {
         newFile();
@@ -193,7 +193,7 @@ public class Teacher extends JFrame {
             studentWindow.setVisible(true);
         }
     }
-
+// Author : Vignesh, Rakesh
     private void button1MouseClicked(MouseEvent e) {
         if (qa_list.get(0).isEmpty()
                 &&qa_list.get(1).isEmpty()
@@ -228,7 +228,7 @@ public class Teacher extends JFrame {
             }
         }
     }
-
+// Author : Vignesh, Rakesh
     private void button2MouseClicked(MouseEvent e) {
         copyArrayList(qa_list_temp, qa_list);
 
@@ -245,7 +245,7 @@ public class Teacher extends JFrame {
         textArea2.setText("Answer will be displayed here.");
         studentWindow.textArea1.setText("Question will be displayed here.");
     }
-
+// Author : Vignesh, Rakesh
     private void button3MouseClicked(MouseEvent e) {
         if(!(category ==5)) {
             if (qa_list_temp.get(category).isEmpty()) {

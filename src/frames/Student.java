@@ -9,7 +9,7 @@ import javax.swing.*;
 import javax.swing.GroupLayout;
 
 /**
- * @author Vignesh
+ * @author Vignesh,Rakesh
  */
 public class Student extends JFrame {
     public Student() {
@@ -58,7 +58,7 @@ public class Student extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
-
+// Author : Vignesh, Rakesh
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Sam
     private JScrollPane scrollPane1;
