@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+// Author : Vignesh, Rakesh
 public class CSVUtils {
 
     private static final char DEFAULT_SEPARATOR = ',';
@@ -34,7 +34,7 @@ public class CSVUtils {
     public static List<String> parseLine(String cvsLine, char separators, char customQuote) {
 
         List<String> result = new ArrayList<>();
-
+// Author : Vignesh, Rakesh
         //if empty, return!
         if (cvsLine == null && cvsLine.isEmpty()) {
             return result;
@@ -109,7 +109,7 @@ public class CSVUtils {
             }
 
         }
-
+// Author : Vignesh, Rakesh
         result.add(curVal.toString());
 
         return result;

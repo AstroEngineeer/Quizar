@@ -21,7 +21,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
 /**
- * @author Vignesh
+ * @author Vignesh, Rakesh
  */
 public class Teacher extends JFrame {
 
@@ -49,7 +49,7 @@ public class Teacher extends JFrame {
 
     void newFile(){
         //radioButton1.setSelected(true);
-
+// Author : Vignesh, Rakesh
         button1.setVisible(true);
         button2.setVisible(false);
         button3.setVisible(false);
@@ -194,7 +194,7 @@ public class Teacher extends JFrame {
             studentWindow.setVisible(true);
         }
     }
-
+// Author : Vignesh, Rakesh
     private void button1MouseClicked(MouseEvent e) {
         if (qa_list.get(0).isEmpty()
                 &&qa_list.get(1).isEmpty()
@@ -270,7 +270,7 @@ public class Teacher extends JFrame {
             JOptionPane.showMessageDialog(this,"select category");
         }
     }
-
+// Author : Vignesh, Rakesh
     private void button4ActionPerformed(ActionEvent e) {
         if(!(category==5))
         {
